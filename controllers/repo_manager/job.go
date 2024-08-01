@@ -193,6 +193,7 @@ func resetAdminPasswordContainer(pulp *repomanagerpulpprojectorgv1beta2.Pulp) co
 		},
 		Resources:    resources,
 		VolumeMounts: volumeMounts,
+		SecurityContext: setDefaultSecurityContext(),
 	}
 }
 
@@ -252,6 +253,7 @@ func migrationContainer(pulp *repomanagerpulpprojectorgv1beta2.Pulp) corev1.Cont
 		},
 		Resources:    resources,
 		VolumeMounts: volumeMounts,
+		SecurityContext: setDefaultSecurityContext(),
 	}
 }
 
@@ -327,6 +329,7 @@ func contentChecksumsContainer(pulp *repomanagerpulpprojectorgv1beta2.Pulp) core
 		},
 		Resources:    resources,
 		VolumeMounts: volumeMounts,
+		SecurityContext: setDefaultSecurityContext(),
 	}
 }
 
@@ -404,6 +407,7 @@ echo "${PULP_SIGNING_KEY_FINGERPRINT}:6" | gpg --import-ownertrust
 		Args:            args,
 		Resources:       resources,
 		VolumeMounts:    volumeMounts,
+		SecurityContext: setDefaultSecurityContext(),
 	}
 }
 
