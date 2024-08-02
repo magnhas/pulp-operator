@@ -239,7 +239,7 @@ func (r *RepoManagerReconciler) deploymentForPulpWeb(m *repomanagerpulpprojector
 								ReadOnly:  true,
 							},
 						},
-						SecurityContext: setDefaultSecurityContext(),
+						SecurityContext: controllers.SetDefaultSecurityContext(),
 					}},
 					SecurityContext: &corev1.PodSecurityContext{RunAsUser: &runAsUser, FSGroup: &fsGroup},
 					Volumes: []corev1.Volume{

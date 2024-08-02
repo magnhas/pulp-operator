@@ -191,9 +191,9 @@ func resetAdminPasswordContainer(pulp *repomanagerpulpprojectorgv1beta2.Pulp) co
 			  /usr/local/bin/pulpcore-manager reset-admin-password --password "${PULP_ADMIN_PASSWORD}"
 			fi`,
 		},
-		Resources:    resources,
-		VolumeMounts: volumeMounts,
-		SecurityContext: setDefaultSecurityContext(),
+		Resources:       resources,
+		VolumeMounts:    volumeMounts,
+		SecurityContext: controllers.SetDefaultSecurityContext(),
 	}
 }
 
@@ -251,9 +251,9 @@ func migrationContainer(pulp *repomanagerpulpprojectorgv1beta2.Pulp) corev1.Cont
 			`/usr/bin/wait_on_postgres.py
 /usr/local/bin/pulpcore-manager migrate --noinput`,
 		},
-		Resources:    resources,
-		VolumeMounts: volumeMounts,
-		SecurityContext: setDefaultSecurityContext(),
+		Resources:       resources,
+		VolumeMounts:    volumeMounts,
+		SecurityContext: controllers.SetDefaultSecurityContext(),
 	}
 }
 
@@ -327,9 +327,9 @@ func contentChecksumsContainer(pulp *repomanagerpulpprojectorgv1beta2.Pulp) core
 			/usr/bin/wait_on_database_migrations.sh
 			pulpcore-manager handle-artifact-checksums`,
 		},
-		Resources:    resources,
-		VolumeMounts: volumeMounts,
-		SecurityContext: setDefaultSecurityContext(),
+		Resources:       resources,
+		VolumeMounts:    volumeMounts,
+		SecurityContext: controllers.SetDefaultSecurityContext(),
 	}
 }
 
@@ -407,7 +407,7 @@ echo "${PULP_SIGNING_KEY_FINGERPRINT}:6" | gpg --import-ownertrust
 		Args:            args,
 		Resources:       resources,
 		VolumeMounts:    volumeMounts,
-		SecurityContext: setDefaultSecurityContext(),
+		SecurityContext: controllers.SetDefaultSecurityContext(),
 	}
 }
 
